@@ -9,7 +9,7 @@ npm install
 ## Run application with command:
 
 ```bash
-npm run dev
+npm start
 ```
 
 ## Open application:
