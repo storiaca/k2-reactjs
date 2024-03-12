@@ -1,0 +1,23 @@
+.navbar {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: burlywood;
+}
+
+.navbar .navbarLogo {
+  margin: 0;
+}
+
+.navbar .navbarLogo img {
+  height: 100px;
+  width: 100px;
+}
+
+.navbar .navbarList {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}

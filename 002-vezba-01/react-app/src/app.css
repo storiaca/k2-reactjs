@@ -1,0 +1,9 @@
+.App {
+  background-color: darkseagreen;
+  padding: 40px 0;
+}
+
+.App .appTitle {
+  text-align: center;
+  margin: 0 0 40px;
+}
