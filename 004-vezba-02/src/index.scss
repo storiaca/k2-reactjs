@@ -1,0 +1,77 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: dodgerblue;
+  padding: 20px;
+  &_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+  }
+
+  &_logo {
+    width: 100px;
+  }
+
+  &_list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    &_item {
+      font-size: 25px;
+    }
+  }
+  
+  &_buttons {
+    display: flex;
+    gap: 10px; 
+
+    button {
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 17px;
+      border: none;
+    }
+  }
+}
+
+.card {
+  width: 600px;
+  height: 500px;
+  padding: 20px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: dodgerblue;
+  &_title {
+
+  }
+
+  &_img {
+    width: 200px;
+  }
+
+  &_price {
+
+  }
+
+  &_counter {
+
+  }
+
+}
