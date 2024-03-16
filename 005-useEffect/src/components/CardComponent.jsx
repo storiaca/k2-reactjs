@@ -1,7 +1,6 @@
 import React from 'react';
 
 export function CardComponent({ item }) {
-  console.log(item);
   return (
     <div className="w-[300px] border border-slate-400 rounded-2xl">
       <div className="relative">

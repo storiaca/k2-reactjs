@@ -1,25 +1,38 @@
 import { useState, useEffect } from 'react';
 
-import { CardComponent } from './components/CardComponent';
-import LoadingComponent from './components/LoadingComponent';
+// import { CardComponent } from './components/CardComponent';
+// import LoadingComponent from './components/LoadingComponent';
 
 function App() {
-  const [myData, setMyData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
-    fetch('https://dummyjson.com/products')
-      .then((res) => res.json())
-      .then((data) => {
-        setMyData(data.products);
-        setIsLoading(true);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    console.log('Radii');
+  }, [active]);
+
+  // const [myData, setMyData] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+
+  // useEffect(() => {
+  //   fetch('https://dummyjson.com/products')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setMyData(data.products);
+  //       setIsLoading(true);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-4xl">Hello ReactJS</h1>
+      <h2>Hello</h2>
+      <button
+        className="bg-orange-400 text-white rounded-md border-none px-3 py-3 text-xl"
+        onClick={() => setActive(!active)}
+      >
+        Change state
+      </button>
+      {/* <h1 className="text-4xl">Hello ReactJS</h1>
 
       {isLoading ? (
         <div className="flex flex-wrap gap-[20px] mt-28">
@@ -29,7 +42,7 @@ function App() {
         </div>
       ) : (
         <LoadingComponent />
-      )}
+      )} */}
     </div>
   );
 }
