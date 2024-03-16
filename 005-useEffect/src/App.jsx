@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
+import SingleUser from './components/SingleUser';
 
 // import { CardComponent } from './components/CardComponent';
 // import LoadingComponent from './components/LoadingComponent';
 
 function App() {
-  const [active, setActive] = useState(false);
+  const [person, setPerson] = useState({
+    name: 'Tihomir',
+    age: 24,
+    address: 'Rasovac',
+  });
 
-  useEffect(() => {
-    console.log('Radii');
-  }, [active]);
+  // const [active, setActive] = useState(false);
+
+  // useEffect(() => {
+  //   console.log('Radii');
+  // }, [active]);
 
   // const [myData, setMyData] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
@@ -25,13 +32,15 @@ function App() {
 
   return (
     <div className="container mx-auto">
-      <h2>Hello</h2>
+      <SingleUser person={person} setPerson={setPerson} />
+
+      {/* <h2>Hello</h2>
       <button
         className="bg-orange-400 text-white rounded-md border-none px-3 py-3 text-xl"
         onClick={() => setActive(!active)}
       >
         Change state
-      </button>
+      </button> */}
       {/* <h1 className="text-4xl">Hello ReactJS</h1>
 
       {isLoading ? (
