@@ -1,0 +1,70 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+.navbar {
+  height: 120px;
+  width: 90%;
+  margin: 0 auto;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  &_logo {
+    border-radius: 20px;
+  }
+
+  &_menuItems {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    
+    &_menuItems_item {
+      font-size: 20px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    
+  }
+
+  &_toggle {
+    display: block;
+    margin: 0 10px;
+    padding-top: 5px;
+    cursor: pointer;
+  }
+
+  &_buttons {
+    display: flex;
+    gap: 20px;
+    
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      background-color: dodgerblue;
+      color: white;
+      border-radius: 8px;
+    }
+  }
+}
+
+
+
+// 43:24
+
+
+
+
+
+
+
+
