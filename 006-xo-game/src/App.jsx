@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-import Cell from './components/Cell';
+import { useEffect, useState } from 'react';
 
-import './App.css';
+import Cell from './components/Cell';
 
 function App() {
   const [cells, setCells] = useState(['', '', '', '', '', '', '', '', '']);
-
   // ko igra prvi
   const [firstGo, setFirstGo] = useState('circle');
   // pobednik
@@ -28,6 +26,7 @@ function App() {
       [0, 4, 8],
       [2, 4, 6],
     ];
+
     winnerCombination.forEach((comb) => {
       let crossWinner = comb.every((cell) => cells[cell] === 'cross');
       let circleWinner = comb.every((cell) => cells[cell] === 'circle');
@@ -45,6 +44,7 @@ function App() {
   }
 
   function handleResetGame() {
+    // napravi novi!!
     if (winner || checkArray) {
       let emptyArray = new Array(9).fill('');
       setCells(emptyArray);
@@ -57,18 +57,22 @@ function App() {
       <h1 className="title">X/O Game</h1>
 
       <div className="squareContainer">
-        {cells.map((cell, index) => (
-          <Cell
-            key={index}
-            id={index}
-            cell={cell}
-            cells={cells}
-            firstGo={firstGo}
-            setFirstGo={setFirstGo}
-            setCells={setCells}
-          />
-        ))}
+        {cells.map((cell, index) => {
+          return (
+            <Cell
+              key={index}
+              id={index}
+              cell={cell}
+              cells={cells}
+              setCells={setCells}
+              firstGo={firstGo}
+              setFirstGo={setFirstGo}
+              winner={winner}
+            />
+          );
+        })}
         <button onClick={handleResetGame}>Reset Game</button>
+
         {winner && <h2>{winner}</h2>}
       </div>
     </div>
