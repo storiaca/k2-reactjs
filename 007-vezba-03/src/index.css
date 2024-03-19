@@ -100,6 +100,10 @@ button {
   font-size: 18px;
 }
 
+button:disabled {
+  background-color: #f917f5;
+}
+
 h2 {
   background-color: #363062;
   padding: 20px;

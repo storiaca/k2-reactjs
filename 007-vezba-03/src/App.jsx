@@ -1,35 +1,79 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import Cell from "./components/Cell";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cells, setCells] = useState(["", "", "", "", "", "", "", "", ""]);
+
+  const [player, setPlayer] = useState("cross");
+
+  const [winner, setWinner] = useState(null);
+
+  useEffect(() => {
+    handleCheckWinner();
+  }, [cells]);
+
+  let checkCells = cells.every((cell) => cell !== "");
+
+  function handleCheckWinner() {
+    let winnerCombination = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    winnerCombination.forEach((comb) => {
+      let crossWinner = comb.every((cell) => cells[cell] === "cross");
+      let circleWinner = comb.every((cell) => cells[cell] === "circle");
+
+      if (crossWinner) {
+        setWinner("Winner is Cross");
+      } else if (circleWinner) {
+        setWinner("Winner is Circle");
+      } else if (checkCells) {
+        setWinner("We dont have a winner");
+      }
+    });
+  }
+
+  function handleResetGame() {
+    let emptyArray = new Array(9).fill("");
+
+    setCells(emptyArray);
+    setWinner(null);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <h1 className="title">X/O Game</h1>
+      <div className="squareContainer">
+        {cells.map((cell, index) => {
+          return (
+            <Cell
+              key={index}
+              id={index}
+              cell={cell}
+              cells={cells}
+              setCells={setCells}
+              player={player}
+              setPlayer={setPlayer}
+              winner={winner}
+            />
+          );
+        })}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <button onClick={handleResetGame} disabled={winner ? false : true}>
+        Reset Game
+      </button>
+
+      {winner && <h2>{winner}</h2>}
+    </div>
+  );
 }
 
-export default App
+export default App;
