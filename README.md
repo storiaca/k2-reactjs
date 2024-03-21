@@ -3,3 +3,15 @@
 ## React icons
 
 https://react-icons.github.io/react-icons/
+
+## Vite tailwind
+
+https://tailwindcss.com/docs/guides/vite
+
+## Dummy JSON
+
+https://dummyjson.com/
+
+## Axios npm
+
+https://www.npmjs.com/package/axios
