@@ -14,14 +14,14 @@ function App() {
   }, [allTodo]);
   return (
     <div
-      className={`${
-        darkMode ? "dark" : "light"
-      } flex flex-col items-center justify-center my-24`}
+      className={`${darkMode ? "dark" : "light"} flex flex-col justify-center`}
     >
-      <TitleComponent>
-        <h1 className="text-3xl font-bold underline">Todo App</h1>
-      </TitleComponent>
       <ToggleMode darkMode={darkMode} setDarkMode={setDarkMode} />
+      <TitleComponent>
+        <h1 className="text-3xl font-bold text-center dark:text-white dark:bg-midnight">
+          Todo App
+        </h1>
+      </TitleComponent>
 
       <TodoInput allTodo={allTodo} setAllTodo={setAllTodo} />
       <TodoOutput allTodo={allTodo} setAllTodo={setAllTodo} />

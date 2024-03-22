@@ -10,7 +10,7 @@ function ToggleMode({ darkMode, setDarkMode }) {
   return (
     <div
       onClick={handleMode}
-      className="flex items-center justify-center my-5 cursor-pointer"
+      className="flex items-center justify-center py-5 cursor-pointer dark:text-white dark:bg-midnight"
     >
       {darkMode ? <MdDarkMode size={42} /> : <CiLight size={42} />}
     </div>

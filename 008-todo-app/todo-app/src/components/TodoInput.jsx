@@ -15,16 +15,22 @@ function TodoInput({ allTodo, setAllTodo }) {
   }
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Insert TODO"
-        onChange={handleInputValue}
-        value={inputValue}
-      />
-      <button onClick={handleTodo} className="bg-white text-black">
-        Add TODO
-      </button>
+    <div className="dark:text-white dark:bg-midnight py-8">
+      <div className="container mx-auto flex gap-2 items-center justify-center">
+        <input
+          type="text"
+          placeholder="Insert TODO"
+          onChange={handleInputValue}
+          value={inputValue}
+          className="px-2 py-1 border dark:border-white dark:text-white dark:bg-midnight"
+        />
+        <button
+          onClick={handleTodo}
+          className="px-2 py-1 border bg-white border-midnight text-black dark:border-white dark:text-white dark:bg-midnight"
+        >
+          Add TODO
+        </button>
+      </div>
     </div>
   );
 }
