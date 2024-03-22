@@ -8,8 +8,10 @@ function TodoInput({ allTodo, setAllTodo }) {
   }
 
   function handleTodoItem() {
-    setAllTodo([...allTodo, { id: new Date().getTime(), title: inputValue }]);
-    setInputValue("");
+    if (inputValue) {
+      setAllTodo([...allTodo, { id: new Date().getTime(), title: inputValue }]);
+      setInputValue("");
+    }
   }
 
   return (
