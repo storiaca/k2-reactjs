@@ -10,9 +10,6 @@ function App() {
 
   return (
     <div className={`${darkMode ? "dark" : "light"}`}>
-      <TitleComponent>
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      </TitleComponent>
       <ToggleMode darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <ProductsComponent />

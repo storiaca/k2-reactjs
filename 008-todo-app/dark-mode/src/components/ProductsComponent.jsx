@@ -13,10 +13,12 @@ function ProductsComponent() {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-slate-600">
-      <div className="conatiner mx-auto">
+    <div className="bg-white dark:text-white dark:bg-midnight py-4">
+      <div className="container mx-auto">
         <TitleComponent>
-          <h2 className="text-lg text-center my-2">All My Products</h2>
+          <h1 className="text-lg md:text-[2.5rem] text-center my-8 dark:text-white">
+            All My Products
+          </h1>
         </TitleComponent>
         <div className="flex flex-wrap gap-4 justify-center">
           {allProducst.map((product) => (

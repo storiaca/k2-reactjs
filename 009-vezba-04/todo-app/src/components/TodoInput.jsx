@@ -25,7 +25,7 @@ function TodoInput({ allTodo, setAllTodo }) {
       />
       <button
         onClick={handleTodoItem}
-        className="border text-red-600 px-2 py-1"
+        className="border text-red-600 px-2 py-1 dark:text-white dark:bg-midnight"
       >
         Add TODO
       </button>
