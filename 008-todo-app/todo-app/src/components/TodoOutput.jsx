@@ -55,6 +55,20 @@ function TodoOutput({ allTodo, setAllTodo }) {
               >
                 <FaRegEdit />
               </button>
+              <Modal open={open} onClose={() => setOpen(false)}>
+                <form>
+                  <label className="sr-only" htmlFor="inputValue">
+                    InputValue
+                  </label>
+                  <input
+                    type="text"
+                    id="inputValue"
+                    onChange={(e) => editInputValue(e, todo.id)}
+                    value={todo.title}
+                  />
+                </form>
+              </Modal>
+
               <button
                 className="ml-3 py-2 pr-2 text-black dark:text-white dark:bg-midnight"
                 onClick={() => handleRemove(todo.id)}
@@ -66,11 +80,6 @@ function TodoOutput({ allTodo, setAllTodo }) {
         ))
       ) : (
         <p>Nema itema</p>
-      )}
-      {open && (
-        <Modal open={open} onClose={() => setOpen(false)}>
-          <h2>Modal radi</h2>
-        </Modal>
       )}
     </div>
   );
