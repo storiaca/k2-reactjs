@@ -19,3 +19,7 @@ https://www.npmjs.com/package/axios
 ## React router
 
 https://reactrouter.com/en/main
+
+## React toastify
+
+https://www.npmjs.com/package/react-toastify
