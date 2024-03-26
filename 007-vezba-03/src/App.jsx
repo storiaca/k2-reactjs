@@ -32,6 +32,7 @@ function App() {
 
       if (crossWinner) {
         setWinner("Winner is Cross");
+        console.log(winner);
       } else if (circleWinner) {
         setWinner("Winner is Circle");
       } else if (checkCells) {
