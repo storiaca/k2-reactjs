@@ -18,13 +18,16 @@ function ProductsPage() {
   }, []);
 
   return (
-    <div>
-      {isLoading ? (
-        allData.map((el) => <ProductCard key={el.id} products={el} />)
-      ) : (
-        <h2>Loading..</h2>
-      )}
-    </div>
+    <>
+      <h2 className="text-center text-3xl my-7">All Products</h2>
+      <div className="container mx-auto flex flex-wrap gap-5 justify-center">
+        {isLoading ? (
+          allData.map((el) => <ProductCard key={el.id} product={el} />)
+        ) : (
+          <h2>Loading..</h2>
+        )}
+      </div>
+    </>
   );
 }
 
