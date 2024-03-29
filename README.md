@@ -23,3 +23,7 @@ https://reactrouter.com/en/main
 ## React toastify
 
 https://www.npmjs.com/package/react-toastify
+
+## Material UI
+
+https://mui.com/material-ui/getting-started/installation/
