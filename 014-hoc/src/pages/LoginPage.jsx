@@ -1,10 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const navigate = useNavigate();
 
@@ -45,6 +51,7 @@ function LoginPage() {
             placeholder="Email"
             value={email}
             onInput={handleInput}
+            ref={inputRef}
           />
         </label>
         <label className="block my-4" htmlFor="pasword">

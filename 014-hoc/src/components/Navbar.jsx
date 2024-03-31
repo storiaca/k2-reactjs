@@ -1,7 +1,14 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
+  const [user, setUser] = useState(true);
+
+  function handleLogout() {
+    localStorage.removeItem("vite_user");
+    setUser(false);
+  }
+
   return (
     <header className="bg-gray-300 mb-10">
       <div className="container mx-auto flex justify-between items-center h-28">
@@ -14,7 +21,7 @@ function Navbar() {
             <NavLink to="/products">Products</NavLink>
           </li>
           {localStorage.hasOwnProperty("vite_user") ? (
-            <button>Logout</button>
+            <button onClick={handleLogout}>Logout</button>
           ) : (
             <li>
               <NavLink to="/login">Login</NavLink>
