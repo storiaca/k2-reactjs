@@ -27,3 +27,15 @@ https://www.npmjs.com/package/react-toastify
 ## Material UI
 
 https://mui.com/material-ui/getting-started/installation/
+
+## Formik
+
+https://formik.org/
+
+https://www.npmjs.com/package/formik
+
+## Yup
+
+https://www.npmjs.com/package/yup
+
+https://github.com/jquense/yup
