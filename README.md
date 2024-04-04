@@ -39,3 +39,7 @@ https://www.npmjs.com/package/formik
 https://www.npmjs.com/package/yup
 
 https://github.com/jquense/yup
+
+## Redux Toolkit
+
+https://redux-toolkit.js.org/
