@@ -6,7 +6,7 @@ function ProductsPage() {
 
   return (
     <div className="mt-5">
-      {/* <Loader /> */}
+      <Loader />
       <h2>{singleProduct.title}</h2>
       <h2>{singleProduct.desc}</h2>
       <p>{singleProduct.price}</p>
