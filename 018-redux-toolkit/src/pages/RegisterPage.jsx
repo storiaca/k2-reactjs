@@ -1,7 +1,11 @@
 import React from "react";
-
+import FormComponent from "../components/FormComponent";
 function RegisterPage() {
-  return <div>RegisterPage</div>;
+  return (
+    <div>
+      <FormComponent />
+    </div>
+  );
 }
 
 export default RegisterPage;
