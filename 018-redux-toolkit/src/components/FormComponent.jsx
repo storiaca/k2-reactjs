@@ -3,9 +3,11 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { FileParser } from '../utils/FileParser';
 import { loggedUserAction } from '../store/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 function FormComponent() {
   const dispatch = useDispatch();
+  const navigation = useNavigate();
 
   const formik = useFormik({
     // 1. initialValues
@@ -40,6 +42,7 @@ function FormComponent() {
       FileParser(values.image)
         .then((res) => {
           dispatch(loggedUserAction({ ...values, image: res }));
+          navigation('/');
         })
         .catch((err) => console.log(err));
       formik.resetForm();

@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function NavbarComponent() {
   return (
@@ -14,22 +14,25 @@ function NavbarComponent() {
             Home
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            className="text-blue-300 uppercase text-lg hover:text-blue-600"
-            to="/profile"
-          >
-            Profile
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className="text-blue-300 uppercase text-lg hover:text-blue-600"
-            to="/register"
-          >
-            Register
-          </NavLink>
-        </li>
+        {localStorage.hasOwnProperty('redux_user') ? (
+          <li>
+            <NavLink
+              className="text-blue-300 uppercase text-lg hover:text-blue-600"
+              to="/profile"
+            >
+              Profile
+            </NavLink>
+          </li>
+        ) : (
+          <li>
+            <NavLink
+              className="text-blue-300 uppercase text-lg hover:text-blue-600"
+              to="/register"
+            >
+              Register
+            </NavLink>
+          </li>
+        )}
       </ul>
     </header>
   );
