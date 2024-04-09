@@ -1,8 +1,8 @@
-import React from "react";
-import FormComponent from "../components/FormComponent";
+import React from 'react';
+import FormComponent from '../components/FormComponent';
 function RegisterPage() {
   return (
-    <div>
+    <div className="px-4">
       <FormComponent />
     </div>
   );

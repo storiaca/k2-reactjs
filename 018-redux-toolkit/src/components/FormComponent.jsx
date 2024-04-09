@@ -1,50 +1,45 @@
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { FileParser } from "../utils/FileParser";
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
+import { FileParser } from '../utils/FileParser';
+import { loggedUserAction } from '../store/userSlice';
 
 function FormComponent() {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     // 1. initialValues
     initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      gender: "",
-      image: "",
-      birthDate: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      gender: '',
+      image: '',
+      birthDate: '',
     },
     // 2. validacija
     validationSchema: Yup.object({
-      firstName: Yup.string().required("Field is required!"),
-      lastName: Yup.string().required("Field is required!"),
+      firstName: Yup.string().required('Field is required!'),
+      lastName: Yup.string().required('Field is required!'),
       email: Yup.string()
-        .email("Enter valid email")
-        .required("Field is required!"),
-      password: Yup.string().min(4).required("Field is required!"),
-      gender: Yup.string().required("Field is required!"),
-      birthDate: Yup.string().required("Field is required!"),
+        .email('Enter valid email')
+        .required('Field is required!'),
+      password: Yup.string().min(4).required('Field is required!'),
+      gender: Yup.string().required('Field is required!'),
+      birthDate: Yup.string().required('Field is required!'),
       image: Yup.mixed()
-        .required("Image is required under 2MB")
-        .test("fileSize", "Wrong file size", (value) => value.size < 2 * MB)
-        .test("fileType", "Wrong file type", (value) =>
-          VALID_TYPE.includes(value.type)
+        .required('Image is required under 2MB')
+        .test('fileSize', 'Wrong file size', (value) => value.size < 2 * MB)
+        .test('fileType', 'Wrong file type', (value) =>
+          VALID_TYPE.includes(value.type),
         ),
     }),
     // 3. onSumbit
     onSubmit: (values) => {
-      console.log(values);
       FileParser(values.image)
         .then((res) => {
-          // posalji mi obejct sa image: string
-          console.log({ ...values, image: res });
-
-          // UserLogin.addUser({ ...values, image: res })
-          //   .then((res) => {
-          //     console.log(res);
-          //     navigate("/");
-          //   })
-          //   .catch((err) => console.log(err));
+          dispatch(loggedUserAction({ ...values, image: res }));
         })
         .catch((err) => console.log(err));
       formik.resetForm();
@@ -53,7 +48,7 @@ function FormComponent() {
 
   /* Validacija slike */
   // type
-  const VALID_TYPE = ["image/png", "image/jpg", "image/jpeg"];
+  const VALID_TYPE = ['image/png', 'image/jpg', 'image/jpeg'];
 
   // size
   const KB = 1024;
@@ -65,14 +60,14 @@ function FormComponent() {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="bg-slate-300 p-5 rounded-lg mt-5 flex flex-col gap-5 w-[500px]"
+      className="bg-slate-300 p-5 rounded-lg mt-5 flex flex-col gap-5 w-full md:w-[500px] md:mx-auto"
     >
       {/* firstName */}
       <div className="flex flex-col">
         <label className="text-[14px] text-gray-600" htmlFor="firstName">
           First Name
           <span className="ml-3 text-[12px] text-red-500">
-            {showError("firstName")}
+            {showError('firstName')}
           </span>
         </label>
         <input
@@ -90,7 +85,7 @@ function FormComponent() {
         <label className="text-[14px] text-gray-600" htmlFor="lastName">
           Last Name
           <span className="ml-3 text-[12px] text-red-500">
-            {showError("lastName")}
+            {showError('lastName')}
           </span>
         </label>
         <input
@@ -109,7 +104,7 @@ function FormComponent() {
         <label className="text-[14px] text-gray-600" htmlFor="email">
           Email
           <span className="ml-3 text-[12px] text-red-500">
-            {showError("email")}
+            {showError('email')}
           </span>
         </label>
         <input
@@ -128,7 +123,7 @@ function FormComponent() {
         <label className="text-[14px] text-gray-600" htmlFor="password">
           Password
           <span className="ml-3 text-[12px] text-red-500">
-            {showError("password")}
+            {showError('password')}
           </span>
         </label>
         <input
@@ -147,7 +142,7 @@ function FormComponent() {
         <label className="text-[14px] text-gray-600" htmlFor="gender">
           Gender
           <span className="ml-3 text-[12px] text-red-500">
-            {showError("gender")}
+            {showError('gender')}
           </span>
         </label>
         <select
@@ -170,7 +165,7 @@ function FormComponent() {
         <label className="text-[14px] text-gray-600" htmlFor="image">
           Image
           <span className="ml-3 text-[12px] text-red-500">
-            {showError("image")}
+            {showError('image')}
           </span>
         </label>
         <input
@@ -190,7 +185,7 @@ function FormComponent() {
         <label className="text-[14px] text-gray-600" htmlFor="birthDate">
           Birth Date
           <span className="ml-3 text-[12px] text-red-500">
-            {showError("birthDate")}
+            {showError('birthDate')}
           </span>
         </label>
         <input
