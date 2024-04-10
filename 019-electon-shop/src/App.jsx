@@ -1,7 +1,11 @@
+import { Outlet } from 'react-router-dom';
+import NavbarComponent from './components/NavbarComponent';
+
 function App() {
   return (
     <div className="container">
-      <h1>Electon</h1>
+      <NavbarComponent />
+      <Outlet />
     </div>
   );
 }

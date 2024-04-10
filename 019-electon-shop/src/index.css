@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .heading {
+    @apply text-xl md:text-2xl 2xl:text-4xl text-mainBlue;
+  }
+}
