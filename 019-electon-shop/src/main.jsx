@@ -6,8 +6,11 @@ import HomePage from './pages/HomePage.jsx';
 import ProductsPage from './pages/ProductsPage.jsx';
 import SingleProductPage from './pages/SingleProductPage.jsx';
 import CartPage from './pages/CartPage.jsx';
+// router
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-
+// redux
+import { Provider } from 'react-redux';
+import store from './store/store.js';
 // clerk
 import { ClerkProvider } from '@clerk/clerk-react';
 
@@ -49,7 +52,9 @@ if (!PUBLISHABLE_KEY) {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </ClerkProvider>
   </React.StrictMode>,
 );

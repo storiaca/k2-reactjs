@@ -18,8 +18,8 @@ function NavbarComponent() {
   return (
     <div>
       <HeadingComponent />
-      <nav className="bg-mainBlue h-[100px]">
-        <div className="container mx-auto flex items-center h-full justify-between">
+      <nav className="bg-mainBlue h-full lg:h-[100px] py-5">
+        <div className="container mx-auto gap-5 flex flex-col lg:flex-row items-center h-full justify-between">
           {/* Logo */}
           <div>
             <Link to={'/'}>
