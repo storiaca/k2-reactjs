@@ -1,5 +1,12 @@
-import React from 'react';
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from '@clerk/clerk-react';
 import HeadingComponent from './HeadingComponent';
+import CategoryComponent from './CategoryComponent';
+
 // icons
 import { CiUser, CiHeart, CiShoppingCart } from 'react-icons/ci';
 
@@ -35,10 +42,23 @@ function NavbarComponent() {
           <div className="">
             <ul className="flex-center gap-5">
               <li className="flex-center">
-                <CiUser color="white" size={25} />
-                <Link to="/" className="text-whiteTextColor">
-                  Sign In
-                </Link>
+                <SignedOut>
+                  <SignInButton />
+                </SignedOut>
+                <SignedIn>
+                  <UserButton
+                    afterSignOutUrl="/"
+                    showName={true}
+                    appearance={{
+                      elements: {
+                        avatarBox: 'w-[40px] h-[40px]',
+                      },
+                      variables: {
+                        colorText: '#f90',
+                      },
+                    }}
+                  />
+                </SignedIn>
               </li>
               <li className="flex-center gap-2">
                 <div className="flex-center">
@@ -62,6 +82,7 @@ function NavbarComponent() {
           </div>
         </div>
       </nav>
+      <CategoryComponent />
     </div>
   );
 }
