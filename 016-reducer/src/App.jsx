@@ -45,7 +45,7 @@ function App() {
         Send Info
       </button>
       <ShowInfo /> */}
-
+      <Loader />
       <Outlet />
     </div>
   );

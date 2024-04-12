@@ -9,4 +9,12 @@
   .badge {
     @apply bg-mainYellow text-whiteTextColor inline-flex items-center justify-center text-xs font-medium me-2 px-2 py-0.5 rounded-full;
   }
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }
