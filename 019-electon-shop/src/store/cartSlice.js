@@ -9,7 +9,6 @@ const cartSlice = createSlice({
   },
   reducers: {
     saveInCartAction: (state, action) => {
-      console.log(action.payload);
       let copyArray = [...state.cart];
       // 1. Da li imamo product u korpi?
       let findIndex = null;
@@ -23,8 +22,13 @@ const cartSlice = createSlice({
 
       // 2. dodaj novi proizvod ili uvecaj isti
       if (findIndex === null) {
-        copyArray.push({ ...action.payload, count: 1 });
+        copyArray.push({
+          ...action.payload,
+          count: 1,
+          cartTotal: action.payload.price,
+        });
         state.totalProduct++;
+        state.totalPrice += action.payload.price;
       } else {
         copyArray[findIndex].count++;
       }
@@ -32,8 +36,25 @@ const cartSlice = createSlice({
       // 3. if statement
       state.cart = copyArray;
     },
+    deleteItemCartAction: (state, action) => {
+      let copyArray = [...state.cart];
+      let findIndex = null;
+
+      copyArray.find((item, index) => {
+        if (item.id === action.payload.id) {
+          findIndex = index;
+          return;
+        }
+      });
+
+      if (findIndex !== null) {
+        copyArray.splice(findIndex, 1);
+      }
+
+      state.cart = copyArray;
+    },
   },
 });
 
-export const { saveInCartAction } = cartSlice.actions;
+export const { saveInCartAction, deleteItemCartAction } = cartSlice.actions;
 export default cartSlice.reducer;
