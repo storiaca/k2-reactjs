@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+// clerk
 import {
   SignedIn,
   SignedOut,
@@ -15,6 +17,7 @@ import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 
 function NavbarComponent() {
+  const { totalProduct } = useSelector((state) => state.cartStore);
   return (
     <div>
       <HeadingComponent />
@@ -72,7 +75,7 @@ function NavbarComponent() {
               <li className="flex-center gap-2">
                 <div className="flex-center">
                   <CiShoppingCart color="white" size={25} />
-                  <span className="badge-2">0</span>
+                  <span className="badge-2">{totalProduct}</span>
                 </div>
                 <Link to="/cart" className="text-whiteTextColor">
                   Cart

@@ -1,14 +1,23 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { saveInCartAction } from '../store/cartSlice';
 import Rating from '@mui/material/Rating';
 import ProductsService from '../services/productsService';
+import Loader from '../components/Loader';
+
+// icons
 import { FaCheck } from 'react-icons/fa';
 import { RxCross2 } from 'react-icons/rx';
-import Loader from '../components/Loader';
+import { CiHeart } from 'react-icons/ci';
+
 function SingleProductPage() {
   const [product, setProduct] = useState({});
   const [currentImage, setCurrentImage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+
+  // dispatch
+  const dispatch = useDispatch();
   // 1. uzmi ID
   const { productId } = useParams();
 
@@ -24,6 +33,10 @@ function SingleProductPage() {
 
   function handleCurrentImage(index) {
     setCurrentImage(index);
+  }
+
+  function handleAddToCart() {
+    dispatch(saveInCartAction(product));
   }
 
   return (
@@ -90,6 +103,22 @@ function SingleProductPage() {
                 ${product.price}
               </span>
             </p>
+            {/* ADD / Favorite Button */}
+            <div className="flex-center mt-12 gap-5">
+              <Link
+                className="bg-mainYellow text-whiteTextColor px-6 py-3 rounded-xl shadow-lg text-[20px]"
+                to="/cart"
+                onClick={handleAddToCart}
+              >
+                Add To Cart
+              </Link>
+              <Link
+                className="bg-lightBlue px-6 py-3 rounded-xl shadow-lg border-2 border-blackTextColor"
+                to="/favorite"
+              >
+                <CiHeart size={28} />
+              </Link>
+            </div>
           </div>
         </div>
       ) : (
