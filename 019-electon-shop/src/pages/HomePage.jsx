@@ -21,6 +21,27 @@ function HomePage() {
   // if (isSignedIn) {
   //   console.log(user);
   // }
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       let response;
+  //       if (currentCategory === 'allProducts') {
+  //         response = await ProductsService.getAllProducts();
+  //       } else {
+  //         response = await ProductsService.getAllProductsByCategory(currentCategory);
+  //       }
+  //       dispatch(saveAllProductsAction(response.data.products));
+  //       setIsLoaded(true);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   fetchData();
+
+  // }, [currentCategory]);
+
   useEffect(() => {
     if (currentCategory === 'allProducts') {
       ProductsService.getAllProducts()
