@@ -8,7 +8,9 @@ import CardProductComponent from '../components/CardProductComponent';
 
 function HomePage() {
   const dispatch = useDispatch();
-  const { allProducts } = useSelector((state) => state.productStore);
+  const { allProducts, currentCategory } = useSelector(
+    (state) => state.productStore,
+  );
   const [isLoaded, setIsLoaded] = useState(false);
   // const { isSignedIn, user, isLoaded } = useUser();
   // if (!isLoaded) {
@@ -20,13 +22,23 @@ function HomePage() {
   //   console.log(user);
   // }
   useEffect(() => {
-    ProductsService.getAllProducts()
-      .then((res) => {
-        dispatch(saveAllProductsAction(res.data.products));
-        setIsLoaded(true);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    if (currentCategory === 'allProducts') {
+      ProductsService.getAllProducts()
+        .then((res) => {
+          dispatch(saveAllProductsAction(res.data.products));
+          setIsLoaded(true);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      ProductsService.getAllProductsByCategory(currentCategory)
+        .then((res) => {
+          dispatch(saveAllProductsAction(res.data.products));
+          setIsLoaded(true);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [currentCategory]);
+
   return (
     <main className="container mx-auto">
       {/* grid/list view */}

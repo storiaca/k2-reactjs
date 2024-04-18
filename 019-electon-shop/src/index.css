@@ -15,6 +15,9 @@
   .badge-2 {
     @apply inline-flex items-center justify-center w-4 h-4 text-[12px] font-bold text-whiteTextColor bg-mainYellow rounded-full;
   }
+  .active-category {
+    @apply bg-mainYellow text-whiteTextColor;
+  }
   @keyframes spinner {
     0% {
       transform: rotate(0deg);

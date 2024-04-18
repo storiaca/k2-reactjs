@@ -1,5 +1,9 @@
 # k2-reactjs
 
+## Github code of project
+
+https://github.com/alphacodedev99/electonshop
+
 ## React icons
 
 https://react-icons.github.io/react-icons/
