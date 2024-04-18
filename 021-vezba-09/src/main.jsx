@@ -7,6 +7,8 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import SingleProductPage from './pages/SingleProductPage.jsx';
 import ProductPage from './pages/ProductPage.jsx';
 import CartPage from './pages/CartPage.jsx';
+import FavoritePage from './pages/FavoritePage.jsx';
+
 // router
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/cart',
         element: <CartPage />,
+      },
+      {
+        path: '/favorite',
+        element: <FavoritePage />,
       },
     ],
   },

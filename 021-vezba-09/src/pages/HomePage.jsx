@@ -9,16 +9,27 @@ function HomePage() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
-  const { products } = useSelector((state) => state.productStore);
+  const { products, currentCategory } = useSelector(
+    (state) => state.productStore,
+  );
 
   useEffect(() => {
-    ProductsService.getAllProducts()
-      .then((res) => {
-        dispatch(saveProductsAction(res.data.products));
-        setIsLoading(true);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    if (currentCategory === 'allProducts') {
+      ProductsService.getAllProducts()
+        .then((res) => {
+          dispatch(saveProductsAction(res.data.products));
+          setIsLoading(true);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      ProductsService.getAllProductsByCategory(currentCategory)
+        .then((res) => {
+          dispatch(saveProductsAction(res.data.products));
+          setIsLoading(true);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [currentCategory]);
 
   return (
     <div className="mt-12 container mx-auto">
