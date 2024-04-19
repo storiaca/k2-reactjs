@@ -49,6 +49,26 @@ const cartSlice = createSlice({
 
       if (findIndex !== null) {
         copyArray.splice(findIndex, 1);
+        state.totalPrice--;
+        state.totalPrice = subTotal(copyArray);
+      }
+
+      state.cart = copyArray;
+    },
+    setPriceHandlerAction: (state, action) => {
+      //console.log(action.payload);
+      const { increment, index } = action.payload;
+      let copyArray = [...state.cart];
+
+      copyArray[index].cartTotal += copyArray[index].price * increment;
+
+      state.totalPrice = subTotal(copyArray);
+
+      if (copyArray[index].count === 1 && increment === -1) {
+        copyArray.splice(index, 1);
+        state.totalProduct--;
+      } else {
+        copyArray[index].count += increment;
       }
 
       state.cart = copyArray;
@@ -56,5 +76,12 @@ const cartSlice = createSlice({
   },
 });
 
-export const { saveInCartAction, deleteItemCartAction } = cartSlice.actions;
+function subTotal(arrayCart) {
+  return arrayCart.reduce((acc, current) => {
+    return acc + current.cartTotal;
+  }, 0);
+}
+
+export const { saveInCartAction, deleteItemCartAction, setPriceHandlerAction } =
+  cartSlice.actions;
 export default cartSlice.reducer;

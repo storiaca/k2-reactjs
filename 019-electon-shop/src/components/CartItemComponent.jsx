@@ -1,8 +1,11 @@
 import { RxCross2 } from 'react-icons/rx';
 import { useDispatch } from 'react-redux';
-import { deleteItemCartAction } from '../store/cartSlice';
+import {
+  deleteItemCartAction,
+  setPriceHandlerAction,
+} from '../store/cartSlice';
 
-function CartItemComponent({ item }) {
+function CartItemComponent({ item, index }) {
   const dispatch = useDispatch();
 
   function handleRemoveItem() {
@@ -28,9 +31,33 @@ function CartItemComponent({ item }) {
         <p>$ {item.price}</p>
       </div>
       <div className="flex-center">
-        <button className="px-2 py-1 bg-slate-300 text-[18px]">-</button>
+        <button
+          onClick={() =>
+            dispatch(
+              setPriceHandlerAction({
+                increment: -1,
+                index,
+              }),
+            )
+          }
+          className="px-2 py-1 bg-slate-300 text-[18px]"
+        >
+          -
+        </button>
         <span className="px-2 py-1 bg-slate-300 text-[18px]">{item.count}</span>
-        <button className="px-2 py-1 bg-slate-300 text-[18px]">+</button>
+        <button
+          onClick={() =>
+            dispatch(
+              setPriceHandlerAction({
+                increment: 1,
+                index,
+              }),
+            )
+          }
+          className="px-2 py-1 bg-slate-300 text-[18px]"
+        >
+          +
+        </button>
       </div>
       {/* cartTotal */}
       <div className="">${item.cartTotal}</div>

@@ -22,11 +22,21 @@ function CartPage() {
               {/* Body content */}
               <div className="">
                 {cart.map((item, index) => {
-                  return <CartItemComponent key={item.id} item={item} />;
+                  return (
+                    <CartItemComponent
+                      key={item.id}
+                      item={item}
+                      index={index}
+                    />
+                  );
                 })}
               </div>
             </div>
             {/* Right side */}
+            <div>
+              <h1 className="">Total price</h1>
+              <span>{totalPrice}</span>
+            </div>
           </div>
         </div>
       ) : (
