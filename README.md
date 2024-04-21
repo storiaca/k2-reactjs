@@ -4,6 +4,10 @@
 
 https://github.com/alphacodedev99/electonshop
 
+## Figma shop
+
+https://www.figma.com/file/yUxpFbO8bWl5XFtrEEZOMn/e-commerce-(Community)?type=design&node-id=1-4&mode=design&t=UvQiHqawchz4S0tB-0
+
 ## React icons
 
 https://react-icons.github.io/react-icons/

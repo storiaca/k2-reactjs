@@ -18,6 +18,9 @@
   .active-category {
     @apply bg-mainYellow text-whiteTextColor;
   }
+  .layoutView {
+    @apply bg-mainBlue p-1 rounded-lg text-whiteTextColor;
+  }
   @keyframes spinner {
     0% {
       transform: rotate(0deg);
