@@ -68,7 +68,7 @@ function NavbarComponent() {
                   <CiHeart color="white" size={25} />
                   <span className="badge">0</span>
                 </div>
-                <Link to="/" className="text-whiteTextColor">
+                <Link to="/favorite" className="text-whiteTextColor">
                   Favorite
                 </Link>
               </li>

@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
+// pages
 import ErrorPage from './pages/ErrorPage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import ProductsPage from './pages/ProductsPage.jsx';
 import SingleProductPage from './pages/SingleProductPage.jsx';
 import CartPage from './pages/CartPage.jsx';
+import FavoritePage from './pages/FavoritePage.jsx';
 // router
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 // redux
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/cart',
         element: <CartPage />,
+      },
+      {
+        path: '/favorite',
+        element: <FavoritePage />,
       },
     ],
   },

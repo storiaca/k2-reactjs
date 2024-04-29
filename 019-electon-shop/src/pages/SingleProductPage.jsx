@@ -10,6 +10,7 @@ import Loader from '../components/Loader';
 import { FaCheck } from 'react-icons/fa';
 import { RxCross2 } from 'react-icons/rx';
 import { CiHeart } from 'react-icons/ci';
+import { saveFavoriteAction } from '../store/favoriteSlice';
 
 function SingleProductPage() {
   const [product, setProduct] = useState({});
@@ -37,6 +38,10 @@ function SingleProductPage() {
 
   function handleAddToCart() {
     dispatch(saveInCartAction(product));
+  }
+
+  function handleAddFavorite() {
+    dispatch(saveFavoriteAction(product));
   }
 
   return (
@@ -115,6 +120,7 @@ function SingleProductPage() {
               <Link
                 className="bg-lightBlue px-6 py-3 rounded-xl shadow-lg border-2 border-blackTextColor"
                 to="/favorite"
+                onClick={handleAddFavorite}
               >
                 <CiHeart size={28} />
               </Link>
