@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import Rating from '@mui/material/Rating';
+import { useDispatch } from 'react-redux';
+import { saveInCartAction } from '../store/cartSlice';
 
 function CardProductComponent({ product, activeView }) {
+  const dispatch = useDispatch();
+
+  function handleAddToCart() {
+    dispatch(saveInCartAction(product));
+  }
+
   return (
     <div
       className={
@@ -42,12 +50,21 @@ function CardProductComponent({ product, activeView }) {
         />
       </div>
 
-      <Link
-        className="bg-mainBlue px-4 py-2 text-whiteTextColor mb-[10px] rounded-lg hover:bg-mainYellow transition-all duration-200"
-        to={`/singleProduct/${product.id}`}
-      >
-        View Details
-      </Link>
+      <div className="py-5 flex gap-3 items-center">
+        <Link
+          className="bg-mainBlue px-4 py-2 text-whiteTextColor rounded-lg hover:bg-mainYellow transition-all duration-200"
+          to={`/singleProduct/${product.id}`}
+        >
+          View Details
+        </Link>
+        <Link
+          className="bg-mainYellow text-whiteTextColor px-4 py-2 rounded-xl shadow-lg text-base"
+          to="/cart"
+          onClick={handleAddToCart}
+        >
+          Add To Cart
+        </Link>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 // clerk
 import {
   SignedIn,
@@ -10,14 +11,14 @@ import HeadingComponent from './HeadingComponent';
 import CategoryComponent from './CategoryComponent';
 
 // icons
-import { CiUser, CiHeart, CiShoppingCart } from 'react-icons/ci';
+import { CiHeart, CiShoppingCart } from 'react-icons/ci';
 
 // logo
 import logo from '../assets/logo.png';
-import { Link } from 'react-router-dom';
 
 function NavbarComponent() {
   const { totalProduct } = useSelector((state) => state.cartStore);
+  const { favoriteTotal } = useSelector((state) => state.favoriteStore);
   return (
     <div>
       <HeadingComponent />
@@ -66,7 +67,7 @@ function NavbarComponent() {
               <li className="flex-center gap-2">
                 <div className="flex-center">
                   <CiHeart color="white" size={25} />
-                  <span className="badge">0</span>
+                  <span className="badge">{favoriteTotal}</span>
                 </div>
                 <Link to="/favorite" className="text-whiteTextColor">
                   Favorite

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { saveInCartAction } from '../store/cartSlice';
 import Rating from '@mui/material/Rating';
 import ProductsService from '../services/productsService';
@@ -16,6 +16,9 @@ function SingleProductPage() {
   const [product, setProduct] = useState({});
   const [currentImage, setCurrentImage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [favoriteIdIcon, setFavoriteIdIcon] = useState(null);
+
+  const { allFavorite } = useSelector((state) => state.favoriteStore);
 
   // dispatch
   const dispatch = useDispatch();
@@ -43,6 +46,16 @@ function SingleProductPage() {
   function handleAddFavorite() {
     dispatch(saveFavoriteAction(product));
   }
+
+  // useEffect(() => {
+  //   allFavorite.find((item) => {
+  //     if ((item.id = parseInt(productId))) {
+  //       setFavoriteIdIcon(item.id);
+  //       return;
+  //     }
+  //   });
+  // }, [allFavorite]);
+  // console.log(favoriteIdIcon);
 
   return (
     <div className="mt-[50px] px-[10px] py-5">
@@ -122,6 +135,11 @@ function SingleProductPage() {
                 to="/favorite"
                 onClick={handleAddFavorite}
               >
+                {/* {favoriteIdIcon === parseInt(productId) ? (
+                  <CiHeart size={28} color="red" />
+                ) : (
+                  <CiHeart size={28} />
+                )} */}
                 <CiHeart size={28} />
               </Link>
             </div>
