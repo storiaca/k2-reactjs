@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 import { useUser } from '@clerk/clerk-react';
 import Loader from '../components/Loader';
 import ProductsService from '../services/productsService';
@@ -65,7 +66,7 @@ function HomePage() {
   }, [currentCategory]);
 
   return (
-    <main className="container mx-auto">
+    <main className="container mx-auto px-4 md:px-0">
       {/* grid/list view */}
       <div className="flex justify-end mt-5 mr-5 gap-5">
         <button
@@ -83,7 +84,10 @@ function HomePage() {
       </div>
 
       {/* Our products */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
         className={
           activeView === 'listView'
             ? 'grid grid-cols-1 gap-5 mt-5'
@@ -105,7 +109,7 @@ function HomePage() {
             <Loader />
           </div>
         )}
-      </div>
+      </motion.div>
     </main>
   );
 }

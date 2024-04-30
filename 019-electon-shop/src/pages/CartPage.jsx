@@ -15,7 +15,7 @@ function CartPage() {
 
     coupon.current.value = '';
   }
-  // 1:09:36
+
   return (
     <div className="px-4">
       <div className="mt-5 lg:mt-12">
@@ -29,7 +29,7 @@ function CartPage() {
               <p>Subtotal</p>
             </div>
             {/* Body content */}
-            <div className="">
+            <div>
               {cart.length > 0 ? (
                 cart.map((item, index) => {
                   return (

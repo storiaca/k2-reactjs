@@ -63,3 +63,7 @@ https://clerk.com/docs/quickstarts/react?_gl=1*1lx6bt2*_gcl_au*NzQ1Nzk5NzE2LjE3M
 ## Badge Examples
 
 https://flowbite.com/docs/components/badge/
+
+## Framer motion
+
+https://www.framer.com/motion/

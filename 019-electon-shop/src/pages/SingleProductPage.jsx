@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 import { saveInCartAction } from '../store/cartSlice';
 import Rating from '@mui/material/Rating';
 import ProductsService from '../services/productsService';
@@ -47,6 +48,38 @@ function SingleProductPage() {
     dispatch(saveFavoriteAction(product));
   }
 
+  // Framer animtion
+  const fadeInAnimationVariantsLeft = {
+    initial: {
+      opacity: 0,
+      x: -100,
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 0.1,
+        duration: 0.5,
+      },
+    },
+  };
+
+  // Framer animtion
+  const fadeInAnimationVariantsRight = {
+    initial: {
+      opacity: 0,
+      x: 100,
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 0.1,
+        duration: 0.5,
+      },
+    },
+  };
+
   // useEffect(() => {
   //   allFavorite.find((item) => {
   //     if ((item.id = parseInt(productId))) {
@@ -62,7 +95,12 @@ function SingleProductPage() {
       {isLoading ? (
         <div className="container mx-auto flex items-start gap-5 flex-col md:flex-row">
           {/* Left side */}
-          <div className="w-full md:w-[50%]">
+          <motion.div
+            variants={fadeInAnimationVariantsLeft}
+            initial="initial"
+            whileInView="animate"
+            className="w-full md:w-[50%]"
+          >
             <img
               className="h-[400px]"
               src={product.images[currentImage]}
@@ -80,9 +118,14 @@ function SingleProductPage() {
                 );
               })}
             </div>
-          </div>
+          </motion.div>
           {/* right side */}
-          <div className="w-full md:w-[50%] flex flex-col gap-3">
+          <motion.div
+            variants={fadeInAnimationVariantsRight}
+            initial="initial"
+            whileInView="animate"
+            className="w-full md:w-[50%] flex flex-col gap-3"
+          >
             <h2 className="font-extrabold text-2xl text-mainBlue">
               {product.title}
             </h2>
@@ -143,7 +186,7 @@ function SingleProductPage() {
                 <CiHeart size={28} />
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       ) : (
         <div className="flex">

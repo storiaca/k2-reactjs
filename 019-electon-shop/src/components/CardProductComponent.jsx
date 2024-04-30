@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Rating from '@mui/material/Rating';
 import { useDispatch } from 'react-redux';
 import { saveInCartAction } from '../store/cartSlice';
+import { motion } from 'framer-motion';
 
 function CardProductComponent({ product, activeView }) {
   const dispatch = useDispatch();
@@ -11,7 +12,9 @@ function CardProductComponent({ product, activeView }) {
   }
 
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 1.1 }}
       className={
         activeView === 'listView'
           ? 'w-full flex flex-center justify-between border-mainBlue border-b pb-[15px]'
@@ -65,7 +68,7 @@ function CardProductComponent({ product, activeView }) {
           Add To Cart
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
